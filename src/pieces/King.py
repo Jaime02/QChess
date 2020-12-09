@@ -32,9 +32,9 @@ class King(Queen):
         # The directions in which the king can move are the same as the queen so the only thing we have
         # to check is that the x and y coordinates do not go more than one square away from the king
         for position in queen_positions:
-            if self.coords[0] - 1 <= queen_positions[position][0] <= self.coords[0] + 1:
-                if self.coords[1] - 1 <= queen_positions[position][1] <= self.coords[1] + 1:
-                    positions.append(queen_positions[position])
+            if self.coords[0] - 1 <= position[0] <= self.coords[0] + 1:
+                if self.coords[1] - 1 <= position[1] <= self.coords[1] + 1:
+                    positions.append(position)
 
         return positions
 
