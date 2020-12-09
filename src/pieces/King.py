@@ -1,14 +1,14 @@
 from PyQt5.QtGui import QPixmap
 
-from .Blank import Blank
+from .Queen import Queen
 from .Piece import Piece, QColor, QPainter, QLabel
 
 
 # Creation of the class King from where the classes BKing and WKing will inherit
 # This class inherits at the same time from the class Piece
-class King(Piece):
+class King(Queen):
     def __init__(self, game, x, y):
-        Piece.__init__(self, game, x, y)
+        Queen.__init__(self, game, x, y)
 
     def is_on_check(self):
         mov = self.game.opponent_eatings()
@@ -26,47 +26,15 @@ class King(Piece):
     def possible_movements(self):
         # Creation of a list to append all the possible positions
         positions = []
-        i = 1
+        # Creation of a list that stores all the possible movements of the queen
+        queen_positions = Queen.possible_movements(self)
 
-        # The if statements check all the squares that surround the king to see if they go off the
-        # board and if they are a blank space, if those two conditions are correct the position is appended
-        # In the case that the first condition isn't met if the squares that surround
-        # the king are enemy pieces its position is appended
-        if (self.coords[0] - i) >= 0 and (self.coords[1] - i) >= 0 \
-                and (isinstance(self.game.pieces[self.coords[0] - i][self.coords[1] - i], Blank)
-                     or self.game.pieces[self.coords[0] - i][self.coords[1] - i].color != self.color):
-            positions.append((self.coords[0] - i, self.coords[1] - i))
-
-        if (self.coords[0] + i) <= 7 and (self.coords[1] - i) >= 0 \
-                and (isinstance(self.game.pieces[self.coords[0] + i][self.coords[1] - i], Blank)
-                     or self.game.pieces[self.coords[0] + i][self.coords[1] - i].color != self.color):
-            positions.append((self.coords[0] + i, self.coords[1] - i))
-
-        if (self.coords[0] - i) >= 0 and (self.coords[1] + i) <= 7 \
-                and (isinstance(self.game.pieces[self.coords[0] - i][self.coords[1] + i], Blank)
-                     or self.game.pieces[self.coords[0] - i][self.coords[1] + i].color != self.color):
-            positions.append((self.coords[0] - i, self.coords[1] + i))
-
-        if (self.coords[0] + i) <= 7 and (self.coords[1] + i) <= 7 \
-                and (isinstance(self.game.pieces[self.coords[0] + i][self.coords[1] + i], Blank)
-                     or self.game.pieces[self.coords[0] + i][self.coords[1] + i].color != self.color):
-            positions.append((self.coords[0] + i, self.coords[1] + i))
-
-        if (self.coords[0] - i) >= 0 and (isinstance(self.game.pieces[self.coords[0] - i][self.coords[1]], Blank)
-                                          or self.game.pieces[self.coords[0] - i][self.coords[1]].color != self.color):
-            positions.append((self.coords[0] - i, self.coords[1]))
-
-        if (self.coords[0] + i) <= 7 and (isinstance(self.game.pieces[self.coords[0] + i][self.coords[1]], Blank)
-                                          or self.game.pieces[self.coords[0] + i][self.coords[1]].color != self.color):
-            positions.append((self.coords[0] + i, self.coords[1]))
-
-        if (self.coords[1] - i) >= 0 and (isinstance(self.game.pieces[self.coords[0]][self.coords[1] - i], Blank)
-                                          or self.game.pieces[self.coords[0]][self.coords[1] - i].color != self.color):
-            positions.append((self.coords[0], self.coords[1] - i))
-
-        if (self.coords[1] + i) <= 7 and (isinstance(self.game.pieces[self.coords[0]][self.coords[1] + i], Blank)
-                                          or self.game.pieces[self.coords[0]][self.coords[1] + i].color != self.color):
-            positions.append((self.coords[0], self.coords[1] + i))
+        # The directions in which the king can move are the same as the queen so the only thing we have
+        # to check is that the x and y coordinates do not go more than one square away from the king
+        for position in queen_positions:
+            if self.coords[0] - 1 <= queen_positions[position][0] <= self.coords[0] + 1:
+                if self.coords[1] - 1 <= queen_positions[position][1] <= self.coords[1] + 1:
+                    positions.append(queen_positions[position])
 
         return positions
 
