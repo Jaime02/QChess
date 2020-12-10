@@ -88,15 +88,15 @@ class Piece(QLabel):
         if self.game.main_window.action_change_theme.text() == "Set dark theme":
             # Paints the piece using white theme
             if (self.coords[0] + self.coords[1]) % 2 == 1:
-                qp.fillRect(0, 0, x, y, QColor(255, 255, 255))
-            else:
                 qp.fillRect(0, 0, x, y, QColor(180, 180, 180))
-        else:
-            # Paints the piece using dark theme
-            if (self.coords[0] + self.coords[1]) % 2 == 1:
-                qp.fillRect(0, 0, x, y, QColor(200, 200, 200))
             else:
+                qp.fillRect(0, 0, x, y, QColor(255, 255, 255))
+        else:
+            # Paints the piece using dark theme 
+            if (self.coords[0] + self.coords[1]) % 2 == 1:
                 qp.fillRect(0, 0, x, y, QColor(80, 80, 80))
+            else:
+                qp.fillRect(0, 0, x, y, QColor(200, 200, 200))
 
         if self.is_selected:
             # Fills the background in yellow if the piece is selected
