@@ -70,11 +70,14 @@ class Piece(QLabel):
         elif self.color != self.game.turn and self.game.selected_piece:
             # Eated piece: self
             # Eaten by: self.game.selected_piece
+
+            # If the king has been eaten, game ends!
             if self.name[1] == "K":
                 if self.name[0] == "b":
                     self.game.game_over("Whites wins!")
                 else:
                     self.game.game_over("Blacks wins!")
+
             elif self.highlight:
                 # Pawns can move two cells ahead only once
                 self.game.selected_piece.first_move = False
