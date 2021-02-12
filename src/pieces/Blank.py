@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QPixmap
 
-from .Piece import Piece
+from QChess.src.pieces.Piece import Piece
 
 
 class Blank(Piece):

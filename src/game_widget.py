@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QMessageBox
 from PyQt5.QtGui import QPixmap
-from .pieces.Bishop import WBishop, BBishop
-from .pieces.Blank import Blank
-from .pieces.King import WKing, BKing
-from .pieces.Knight import WKnight, BKnight
-from .pieces.Pawn import WPawn, BPawn
-from .pieces.Queen import WQueen, BQueen
-from .pieces.Rook import WRook, BRook
+from QChess.src.pieces.Bishop import WBishop, BBishop
+from QChess.src.pieces.Blank import Blank
+from QChess.src.pieces.King import WKing, BKing
+from QChess.src.pieces.Knight import WKnight, BKnight
+from QChess.src.pieces.Pawn import WPawn, BPawn
+from QChess.src.pieces.Queen import WQueen, BQueen
+from QChess.src.pieces.Rook import WRook, BRook
 
 
 class GameWidget(QWidget):

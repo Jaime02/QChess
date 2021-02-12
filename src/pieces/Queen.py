@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QPixmap
 
-from .Rook import Rook
-from .Bishop import Bishop
+from QChess.src.pieces.Rook import Rook
+from QChess.src.pieces.Bishop import Bishop
 
 
 # Creation of the class Queen from where the classes BQueen and WQueen will inherit

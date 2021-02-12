@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QPixmap
 
-from .Piece import Piece
+from QChess.src.pieces.Piece import Piece
 
 
 # The pawn piece is the only one that has not been compressed into a single class and then inherited by two other

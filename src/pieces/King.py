@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QPixmap
 
-from .Queen import Queen
-from .Piece import Piece, QColor, QPainter, QLabel
+from QChess.src.pieces.Queen import Queen
+from QChess.src.pieces.Piece import Piece, QColor, QPainter, QLabel
 
 
 # Creation of the class King from where the classes BKing and WKing will inherit

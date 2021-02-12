@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QPixmap
 
-from .Piece import Piece
-from .Blank import Blank
+from QChess.src.pieces.Piece import Piece
+from QChess.src.pieces.Blank import Blank
 import operator
 
 
